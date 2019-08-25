@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\hspace{0pt}}p{#1}}
+\begin{document}
+
+Profiling recorded over 59 min, 15 s with 3 system restarts. Stats persist across restarts.
+
+\begin{tabular}{P{5cm}|r|r|r}
+Function&\# calls& Avg.run time $\mu$s& Run time excl. subord. \\\hline
+getmemorypoolarrivaltimes& 1& 7&\\\hline
+getmininginfo& 1& 43&\\\hline
+getinfo& 1& 90&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ AcceptToMemoryPoolWithTime $\to$ AcceptToMemoryPoolWorker $\to$ VerifyScript& 42& 70&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ AcceptToMemoryPoolWithTime $\to$ AcceptToMemoryPoolWorker& 11& 397&130\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ AcceptToMemoryPoolWithTime& 11& 405&8\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ ProcessMessage $\to$ PeerLogicValidation :: UpdatedBlockTip& 10& 4&\\\hline
+VerifyScript& 43702& 174&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ VerifyScript& 47942& 168&\\\hline
+getperformanceprofile& 11& 4263&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ RelayAddress& 2& 7&\\\hline
+LoadMempool& 3& 50&\\\hline
+getmemoryinfo& 9& 185&\\\hline
+UpdateTip& 6& 69&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ UpdateBlockAvailability& 202& 1&\\\hline
+PeerLogicValidation :: ProcessMessages& 404350& 1370&3\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ ProcessHeadersMessage $\to$ UpdateBlockAvailability& 561& 2&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage& 114239& 4838&3375\\\hline
+CDBIterator :: Next& 292442& 3&\\\hline
+PeerLogicValidation :: SendMessages $\to$ FindNextBlocksToDownload& 377284& 7&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ ProcessHeadersMessage& 561& 273734&273733\\\hline
+PeerLogicValidation :: SendMessages& 404349& 22&15\\\hline
+PeerLogicValidation :: UpdatedBlockTip& 6& 1&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessGetData& 15& 1386&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ PeerLogicValidation :: UpdatedBlockTip& 112796& 1&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ ProcessGetData& 88& 1440&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ UpdateTip& 112797& 47&\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ ProcessMessage& 10& 1882&1738\\\hline
+PeerLogicValidation :: ProcessMessages $\to$ ProcessMessage $\to$ ProcessMessage $\to$ UpdateTip& 10& 140&\\\hline
+\end{tabular}
+
+\includegraphics[width=5cm]{images/chartVerifyScript.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages-_3EProcessMessage-_3EVerifyScript.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages-_3EProcessMessage-_3EUpdateBlockAvailability.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages-_3EProcessMessage-_3EProcessHeadersMessage-_3EUpdateBlockAvailability.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages-_3EProcessMessage.png}
+\includegraphics[width=5cm]{images/chartCDBIterator_3A_3ANext.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3ASendMessages-_3EFindNextBlocksToDownload.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages-_3EProcessMessage-_3EProcessHeadersMessage.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3ASendMessages.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages-_3EProcessMessage-_3EPeerLogicValidation_3A_3AUpdatedBlockTip.png}
+\includegraphics[width=5cm]{images/chartPeerLogicValidation_3A_3AProcessMessages-_3EProcessMessage-_3EUpdateTip.png}
+\end{document}

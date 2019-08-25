@@ -1,0 +1,168 @@
+% % % % % % % %
+% % % % % % % %
+%IMPORTANT
+%compiles with
+%pdflatex -shell-escape
+%IMPORTANT
+% % % % % % % %
+% % % % % % % %
+% !TeX spellcheck = en_US
+%On windows: comment out the line \input{../system-specific-config-Ubuntu-texlive}
+\documentclass%
+%[handout]%
+{beamer}
+%IMPORTANT: the following line selects the current lecture. Change number to select a different lecture.
+
+\newcommand{\currentLecture}{1}
+
+\mode<presentation>
+{
+\useinnertheme{rounded}
+\useoutertheme{infolines}
+\usecolortheme{orchid}
+\usecolortheme{whale}
+}
+%\setbeamertemplate{footline}{%
+%  \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[10pt]{\scriptsize\insertframenumber}}}}
+
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+\graphicspath{{../../modules/}}
+
+\newcommand{\lect}[4]{
+\ifnum#3=\currentLecture
+  \date{#1}
+  \lecture[#1]{#2}{#3}
+#4
+\else
+%include nothing
+\fi
+}
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamertemplate{navigation symbols}{}
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+%\pgfdeclareimage[height=0.8cm]{logo}{bluelogo}
+%\logo{\pgfuseimage{logo}}
+
+
+\usepackage[latin1]{inputenc}
+\usepackage{etex}
+\usepackage{ifthen}
+\usepackage[strings]{underscore}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{bbding}
+\let\Cross\relax
+\let\Square\relax
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{psfrag}
+\usepackage{rotating}
+\usepackage{fp}
+\usepackage{calc}
+\usepackage{bm}
+\usepackage[all,cmtip]{xy}
+\RequirePackage{xstring}
+\usepackage{times}
+\usepackage[english]{babel}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage[breakwords]{truncate}
+
+
+
+\newcommand{\alertNoH}[2]{\alert<handout:0|#1>{#2}}
+
+\newcommand{\fcAnswerNoH}[2]{
+\FPeval{\fcResult}{clip(#1-1)}
+\uncover<handout:0|\fcResult>{\alertNoH{\fcResult}{\textbf{?} }} \worksheet{\uncover<handout:0| #1->{\alertNoH{#1}{\!\!\!#2}}}
+}
+\newcommand{\fcAnswer}[2]{%
+\uncover<handout:0|\the\numexpr#1-1\relax>{\alertNoH{\the\numexpr#1-1\relax}{\textbf{?}}}\worksheet{\uncover<#1->{\alertNoH{#1}{\!\!\!#2}}}%
+}%
+
+\newcommand{\fcAnswerUncover}[3]{%
+\FPeval{\fcResult}{clip(#2-1)}%
+\uncover<handout:0|#1-\fcResult>{\alertNoH{\fcResult}{\textbf{?}}}\worksheet{\uncover<#2->{\alertNoH{#2}{\!\!\!#3}}}
+%\makebox[\widthof{#3}][c]{\only<handout:0|#1-\fcResult>{\alertNoH{\fcResult}{\textbf{?}}} \only<#2->{\alertNoH{#2}{\!\!\!#3}}}%
+}
+\newcommand{\fcAnswerUncoverNew}[4]{%
+\uncover<handout:0|.(#1)-.(#2)>{\alertNoH{.(#2)}{\textbf{?}}}\worksheet{\uncover<.(#3)->{\alertNoH{.(#3)}{\!\!\!#4}}}
+%\makebox[\widthof{#3}][c]{\only<handout:0|#1-\fcResult>{\alertNoH{\fcResult}{\textbf{?}}} \only<#2->{\alertNoH{#2}{\!\!\!#3}}}%
+}
+
+\newcommand{\fcAnswerUncoverNoH}[3]{
+\FPeval{\fcResult}{clip(#2-1)}
+\uncover<handout:0|#1-\fcResult>{\alertNoH{\fcResult}{\textbf{?}}}\worksheet{\uncover<handout:0|#2->{\alertNoH{#2}{\!\!\!#3}}}
+}
+
+\newcommand{\fcQuestion}[2]{%
+\FPeval{\fcResult}{clip(#1+1)}%
+\uncover<#1->{\alertNoH{ #1,\fcResult}{#2}}%
+}
+\newcommand{\fcEvalToInt}[1]{\FPeval{\fcResult}{clip(#1)}\fcResult}
+\newcommand{\refBad}[3]{%
+\ifthenelse{\equal{#1}{??}}%
+{#2}%
+{#3}%
+}%example usage: \refBad{\ref{eqMacLaurinDef}}{their definition}{their definition (Definition \ref{eqMacLaurinDef})}
+\newcommand{\fcCancel}[2]{%
+\FPeval{\fcResult}{clip(#1-1)}%
+\only<handout:0|-\fcResult>{{#2}} \only<#1->{{\alertNoH{#1}{{\cancel{{\alertNoH{0}{{#2}}}}}}}}
+\vphantom{{\cancel{#2}}}%
+}
+
+
+
+\begin{document}
+
+\AtBeginLecture{%
+
+\title[\insertlecture]{\hspace{-1.3cm} {\raisebox{-0.7cm}[0cm][0cm]{ \includegraphics[height =1.2cm]{../../html/fabcoin.png}}}~~~~Bootstrap kanbanGO~~~~~~~}
+\subtitle{\insertlecture}
+\author[\raisebox{-0.115cm}{\includegraphics[height=0.4cm]{../../html/fabcoin.png}} Kanban prototype]{ Todor Milev, Ph.D.
+}
+\institute[FAB]{Senior C++ programmer \\ FA Enterprise System}
+\date{\insertshortlecture}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents[pausesections]
+\end{frame}
+}%
+\lect{\today}{Progress December 21}{1}{
+\include{presentation-content-2018-12-21}
+}
+
+\end{document}
