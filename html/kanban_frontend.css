@@ -1,0 +1,535 @@
+:root{
+  --colorBackgroundDefault: white;
+  --colorFontDefault: black;
+  --colorButtonBackgroundStandard: lightblue;
+  --colorButtonFontStandard: black;
+  --colorButtonStandardHovered: lightskyblue;
+  --colorButtonStandardSelected: skyblue;
+  --colorBackgroundTooltip: lightgray;
+  --colorBackgroundUsedAsInput: lightgreen;
+  --colorBackgroundUpdatedRecently: lightcyan;
+  --colorBackgroundButtonProgressHover: lightgray;
+  --colorBorderPanel: black;
+  --colorBorderMenuSeparator: black;
+  --colorButtonBackgroundRPCInput: #f3f3f3;
+  --colorButtonBackgroundHoverRPCInput: lightcyan;
+  --colorButtonFontRPCInput: black;
+}
+
+body {
+  background: var(--colorBackgroundDefault);
+  color: var(--colorFontDefault);
+  transition: all 3s;
+}
+
+div.divPageAndMenu{
+/*  display: flex;
+  flex-direction: row;*/
+  width: 100%;
+  visibility: visible;
+  transition: all 3s;
+}
+
+div.divMenuSeparator{
+  text-align: center;
+  font-weight: lighter;
+  font-size: smaller;
+  border-bottom: 1px solid var(--colorBorderMenuSeparator);
+}
+
+div.divMenu{
+  display: flex;
+  flex-direction: column;
+  transition: all 1s;
+/*  max-width: 120px;*/
+  width: 10%;
+  height: 100%;
+  position: fixed;
+  right: 0%;
+  top: 0%;
+  overflow: hidden;
+  background: black;
+  text-align: center;
+}
+
+div.divMenuCollapsed{
+  display: flex;
+  max-width: 29px;
+  width: 29px;
+  flex-direction: column;
+  transition: all 1s;
+  overflow: hidden;
+}
+
+div.divControlPanelNetwork{
+  width: 87%; 
+  bottom: 0px;
+  max-height: 20px;
+  position: fixed;
+}
+
+div.divControlPanelDefault{
+  margin: 6px;
+  padding: 6px;
+  transition: all 1s;
+  /*  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);*/
+  border: 1px solid var(--colorBorderPanel);
+  display: inline-block;
+}
+
+div.divMenuButtonPanel div{
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  flex: 1;
+}
+
+div.divMainPage{
+  overflow: auto;
+  width: 89%;
+  position: absolute;
+  height: 95%;
+  transition: all 3s;
+  background: var(--colorBackgroundDefault);
+  color: var(--colorFontDefault);
+}
+
+div.divTableContainerSearch{
+  overflow: auto;
+  height: 80%;
+  font-size: x-small;
+}
+
+span.spanProgressReport{
+  transition: all 2s;
+}
+
+div.pageMainWindow{
+  margin-left: 12px;
+}
+
+button.buttonSelectPage{
+  border: 0;
+  background-color: var(--colorButtonBackgroundStandard);
+  color: var(--colorButtonFontStandard);
+  transition: all 2s;
+  border-radius: 2px;
+  padding: 5px;
+  width: 120px;
+}
+
+button.buttonSelectPage:hover{
+  background-color: var(--colorButtonStandardHovered);
+}
+
+button.buttonStandardLight{
+  border: 0;
+  background-color: azure;
+  transition: all 2s;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: var(--colorBackgroundTooltip);
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  transform: translateY(20px);
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+.buttonStandard .tooltiptext {
+  visibility: hidden;
+  background-color: var(--colorBackgroundTooltip);
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  transform: translateY(20px);
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.buttonStandard:hover .tooltiptext {
+  visibility: visible;
+}
+
+button.buttonStandard{
+  border: 0;
+  background-color: var(--colorButtonBackgroundStandard);
+  color: var(--colorButtonFontStandard);
+  transition: all 2s;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 2px;
+}
+
+button.buttonStandardSelected{
+  background-color: var(--colorButtonStandardSelected)
+}
+
+button.buttonStandard:hover{
+  background-color: var(--colorButtonStandardHovered);
+}
+
+button.buttonStandardLight:hover{
+  background-color: lightskyblue;
+}
+
+button.buttonProgress {
+  border: 0;
+  background: none;
+  transition: all 2s;
+  border-radius: 2px;
+  margin-top: 0px;
+}
+
+button.buttonProgress:hover {
+  background-color: var(--colorBackgroundButtonProgressHover);
+}
+
+error{
+  font-weight: bold;
+  color: red;
+}
+
+table.tableStandardInputs {
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+table.tableStandardInputs td{
+  vertical-align: top;
+}
+
+table.tableProfiling td{
+  text-align: right;
+}
+
+table.tableJSON {
+  border-collapse: collapse;
+  border: 1px solid var(--colorBorderPanel);
+  vertical-align: top;
+}
+
+table.tableJSON tr{
+  vertical-align: top;
+}
+
+table.tableJSON th{
+  font-size: small;
+  font-weight: lighter;
+  border: 1px solid var(--colorBorderPanel);
+}
+
+table.tableJSON td{
+  font-size: small;
+  font-weight: lighter;
+  border: 1px solid var(--colorBorderPanel);
+  vertical-align: top;
+}
+
+span.spanRESTDeveloperInfo{
+  white-space: pre-wrap;
+  word-wrap:break-word;
+  transition: all 2s;  
+}
+
+img.imgFabLogo{
+  width: 100%;
+  max-width: 100px;
+}
+
+/* Customize the label (the container) */
+.containerRadioButton {
+  position: relative;
+  padding-left: 25px;
+  padding-right: 5px;
+  border-radius: 3px;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerRadioButton input {
+  position: absolute;
+  opacity: 0;
+}
+
+
+/* Create a custom radio button */
+.radioMark {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containerRadioButton:hover input ~ .radioMark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerRadioButton input:checked ~ .radioMark {
+  background-color: lightskyblue;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radioMark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containerRadioButton input:checked ~ .radioMark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerRadioButton .radioMark:after {
+  top: 4px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+
+.textAreaStandard{
+  display: inline-block;
+  margin: 5px;
+}
+
+.inputStandard {
+  transition: all 2s;
+  margin-top: 10px;
+  color: var(--colorFontDefault);
+  background: var(--colorBackgroundDefault);
+}
+
+.inputOmni {
+  transition: all 2s;
+}
+
+.inputOmniWithError {
+  background: pink;
+}
+
+.inputErrorRecently {
+  transition: all 2s;
+  background: pink;
+}
+
+.inputUsedAsInput {
+  transition: all 2s; 
+  background-color: var(--colorBackgroundUsedAsInput);
+}
+
+div.divLabelButtonGroup {
+  text-align: right; 
+  font-size: x-small;
+  width: 100%;
+  min-width: 100px;
+}
+
+button.buttonJSONExpand {
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  margin: 0px;
+  cursor: pointer;
+  transition: all 2s;
+  color: var(--colorFontDefault);
+}
+
+button.buttonJSONExpand:hover {
+  background-color: var(--colorBackgroundButtonProgressHover);
+}
+
+.panelMenu {
+  background-color: var(--colorButtonBackgroundStandard);
+  max-width: 108px;
+  border-radius: 2px;
+  padding: 6px;
+  text-align: center;
+  display: inline-block;
+}
+
+button.buttonRPCInput {
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  margin: 0px;
+  cursor: pointer;
+  transition: all 2s;
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--colorButtonFontRPCInput);
+  background-color: var(--colorButtonBackgroundRPCInput);
+}
+
+button.buttonRPCInput:hover{
+  background-color: var(--colorButtonBackgroundHoverRPCInput);
+}
+
+.panelStandard {
+  transition: all 0.6s;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+span.panelRPCWithExpansion {
+  white-space: nowrap;
+}
+
+.updatedRecently {
+  transition: all 1s;
+  background: var(--colorBackgroundUpdatedRecently);
+}
+
+/* Customize the label (the container) */
+.containerCheckBox {
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.containerCheckBox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkMark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.containerCheckBox:hover input ~ .checkMark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerCheckBox input:checked ~ .checkMark {
+  background-color: lightskyblue;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkMark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.containerCheckBox input:checked ~ .checkMark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.containerCheckBox .checkMark:after {
+  left: 4px;
+  top: 0px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+table.tableTestKanban td, th{
+  padding: 5px;
+  margin: 5px
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-control-placeholder {
+  transition: all 0.2s;
+  margin-top: 10px;
+  opacity: 0.5;
+  position: absolute;
+  left: 2px; 
+}
+
+.form-control:not(:placeholder-shown) + .form-control-placeholder {
+  font-size: 68%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+}
+
+.form-control:placeholder-shown + .form-control-placeholder  {
+  visibility: hidden;
+}
+
+span.panelRevealedContent {
+  display: block;
+  max-height: 0;
+  max-width: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  transition: all 1s;
+  opacity: 0;
+}
+
+#outputSolidityCompilation {
+  display: inline-block;
+  max-height: 250px;
+  height: 250px;
+  overflow: auto;
+}
+
+#aceEditor {
+  margin: 0;
+  display: inline-block;
+  position: relative;
+  height: 200px;
+  width: 600px;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
