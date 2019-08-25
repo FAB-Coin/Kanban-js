@@ -1,0 +1,66 @@
+node_modules/
+secrets_admin/
+secrets_server_only/
+secrets_kanban/
+secrets_data_fabcoin/
+experimental/*
+build/
+
+#visual studio code files:
+.vscode
+
+#qt creator files:
+*.user
+
+logfiles/
+opencl/secp256k1
+test/kanban_gpu/debug/
+
+*.aux
+*.gz
+*.out
+*.log
+*.bbl
+*.blg
+*.toc
+*.nav
+*.snm
+*.vrb
+*.d
+*.o
+*.pdf
+*.pid
+build/Makefile
+.idea/
+./package-lock.json
+
+go/bin
+go/src/github.com/golang.org
+go/src/github.com/ramya-rao-a
+go/src/github.com/rogpeppe
+go/src/github.com/sqs
+go/src/golang.org/
+go/src/github.com/acroca/
+go/src/github.com/derekparker/
+go/src/github.com/karrick/
+go/src/github.com/mdempsky/
+go/src/github.com/pkg/
+go/src/github.com/uudashr/
+go/src/github.com/fjl/
+go/pkg
+
+#this auto-generated file should really be in the repo,
+#adding to gitignore in order to not 
+#flood the repo with changes. 
+#Will be commented out when time comes to deploy.
+html/kanban_frontend_browserified.js
+
+*.run.xml
+
+#Mac-specific files
+.DS_Store
+go/.DS_Store
+go/src/.DS_Store
+go/src/github.com/.DS_Store
+go/src/github.com/blockchaingate/.DS_Store
+
